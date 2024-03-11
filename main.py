@@ -43,8 +43,12 @@ def choose_position(win):
                 print("This position is incorrect")
                 continue
         win = check_win(player1[0])
+        full_board = check_full_board(board)
         if win:
             print("Player 1 win")
+            break
+        elif full_board:
+            print("Draw")
             break
         while True:
             p2 = int(input("Choose position(1-9)(player 2):"))
@@ -86,6 +90,11 @@ def check_win(mark):
         return False
 
 
+def check_full_board(board):
+    if ' ' not in board:
+        return True
+
 if __name__ == '__main__':
     choose_mark()
     choose_position(win)
+    check_full_board(board)
